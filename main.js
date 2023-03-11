@@ -24,7 +24,7 @@ function submitIssue(e) {
 const closeIssue = id => {
   const issues = JSON.parse(localStorage.getItem('issues'));
   
-  const currentIssue = issues.find(issue => issue.id === id);
+  const currentIssue = issues.find(issue => issue.id == id);
   currentIssue.status = 'Closed';
   localStorage.setItem('issues', JSON.stringify(issues));
   fetchIssues();
@@ -53,7 +53,7 @@ const fetchIssues = () => {
                                 <h3> ${description} </h3>
                                 <p><span class="glyphicon glyphicon-time"></span> ${severity}</p>
                                 <p><span class="glyphicon glyphicon-user"></span> ${assignedTo}</p>
-                                <a href="#" onclick="deleteIssue(${id})" class="btn btn-warning">Close</a>
+                                <a href="#" onclick="closeIssue(${id})"  class="btn btn-warning">Close</a>
                                 <a href="#" onclick="deleteIssue(${id})" class="btn btn-danger">Delete</a>
                                 </div>`;
     }
@@ -63,3 +63,17 @@ const fetchIssues = () => {
   }
   
 }
+//onclick="closeIssue(${id})"
+// const setCloseItem = (id) =>{
+
+//   const issues = JSON.parse(localStorage.getItem('issues'));
+//   const remainingIssues = issues.find(issues => issues.id == id );
+  
+//   if(remainingIssues.status === 'Open'){
+//     remainingIssues.status = "close";
+//   }else{
+//     remainingIssues.status = "Open";
+//   }
+//   //console.log(remainingIssues)
+//   localStorage.setItem('issues', JSON.stringify(remainingIssues));
+// }
